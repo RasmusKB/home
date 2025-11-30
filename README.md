@@ -1,5 +1,10 @@
 # Home
 
+* Create nix.conf (Workaround) at `~/.config/nix/nix.conf` containing
+```sh
+experimental-features = nix-command flakes
+```
+
 * Install [nix](https://nixos.org/download.html)
 ```sh
 sh <(wget -qO- https://nixos.org/nix/install) --daemon
