@@ -2,7 +2,7 @@
 
 with extendedLib;
 let
-   cfg = config.modules.misc.shell.fish;
+   cfg = config.modules.misc.shell.zsh;
 in
 {
   options.modules.misc.shell.zsh = {
@@ -12,7 +12,7 @@ in
   config = mkIf cfg.enable {
     programs.zsh = {
       enable = true;
-      ohMyZsh = {
+      oh-my-zsh = {
         enable = true;
         theme = "robbyrussell";
         plugins = [

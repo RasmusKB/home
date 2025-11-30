@@ -15,21 +15,19 @@ in
 {
   imports = [
     ../modules/home.nix
-    ../modules/desktop
-    ../modules/services
     ../modules/editors
     ../modules/misc
   ];
 
-  home.username = "rasmustest";
-  home.homeDirectory = "/home/rasmustest";
+  home.username = "rasmusbak";
+  home.homeDirectory = "/home/rasmusbak";
   home.stateVersion = "23.11";
 
   home.packages = with pkgs; [
     nixgl.nixGLIntel
   ];
 
-  nixGL = {
+  targets.genericLinux.nixGL = {
     packages = nixGL.packages; # you must set this or everything will be a noop
     defaultWrapper = "mesa"; # choose from options
     installScripts = ["mesa"];
@@ -46,6 +44,8 @@ in
     ripgrep.enable = true;
     shell.zsh.enable = true;
     terminal.alacritty.enable = true;
+	browser.chromium.enable = true;
+	fzf.enable = true;
   };
 
   home.file.".config/nix/" = {
@@ -55,5 +55,4 @@ in
 
   programs.home-manager.enable = true;
   programs.command-not-found.enable = true;
-  programs.ssh.enable = true;
 }

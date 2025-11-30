@@ -6,7 +6,7 @@ else
     })
 end
 
-local ok_floaterm, _ = pcall(require, "floaterm")
+local ok_floaterm, _ = pcall(require, "vim-floaterm")
 if not ok_floaterm then
     vim.notify("vim-floaterm is not installed!", vim.log.levels.WARN)
 else

@@ -10,6 +10,9 @@ in
   };
 
   config = mkIf cfg.enable {
+    home.packages = with pkgs; [
+	  nerd-fonts._0xproto
+	];
     programs.alacritty = {
       enable = true;
       package = config.lib.nixGL.wrap pkgs.alacritty;
@@ -24,6 +27,22 @@ in
             columns = 100;
           };
         };
+
+		font = {
+		  normal = {
+			family = "0xProto Nerd Font Mono";
+			style = "Regular";
+		  };
+		  bold = {
+			family = "0xProto Nerd Font Mono";
+			style = "Bold";
+		  };
+		  italic = {
+			family = "0xProto Nerd Font Mono";
+			style = "Italic";
+		  };
+		  size = 10.0;
+		};
 
         # 1. Running showkeys -a, alacritty doesn't distinguish
 	# between Ctrl-Backspace and Backspace (both returns 0x7f)

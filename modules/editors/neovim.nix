@@ -14,13 +14,14 @@ in
     programs.neovim.enable = true;
 
     programs.neovim.plugins = with pkgs-stable; [
+      vimPlugins.nvim-treesitter.withAllGrammars
+      vimPlugins.nvim-treesitter
 	  vimPlugins.bufferline-nvim
 	  vimPlugins.cmp-nvim-lsp
 	  vimPlugins.dashboard-nvim
  	  vimPlugins.diffview-nvim
 	  vimPlugins.flash-nvim
 	  vimPlugins.gruvbox
-	  vimPlugins.lazy-nvim
 	  vimPlugins.lualine-nvim
 	  vimPlugins.mason-lspconfig-nvim
 	  vimPlugins.mason-nvim
@@ -29,10 +30,7 @@ in
 	  vimPlugins.noice-nvim
 	  vimPlugins.nui-nvim
 	  vimPlugins.nvim-cmp
-	  vimPlugins.nvim-jdtls
-	  vimPlugins.nvim-lspconfig
 	  vimPlugins.nvim-surround
-	  vimPlugins.nvim-treesitter
 	  vimPlugins.nvim-web-devicons
 	  vimPlugins.plenary-nvim
 	  vimPlugins.project-nvim
@@ -42,6 +40,12 @@ in
 	  vimPlugins.telescope-nvim
 	  vimPlugins.trouble-nvim
 	  vimPlugins.vim-floaterm
+    ];
+
+	programs.neovim.extraPackages = with pkgs-stable; [
+      tree-sitter
+      tree-sitter-grammars.tree-sitter-norg
+      tree-sitter-grammars.tree-sitter-norg-meta
     ];
 
     home.packages = with pkgs-stable; [

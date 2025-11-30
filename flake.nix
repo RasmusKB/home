@@ -51,7 +51,7 @@
       users.defaultUserShell = pkgs.zsh;
 
       packages.homeConfigurations = {
-        rasmustest =
+        rasmusbak =
           home-manager.lib.homeManagerConfiguration {
             inherit pkgs;
             modules = [ ./hosts/ubuntu_22_04_laptop_home.nix ];
