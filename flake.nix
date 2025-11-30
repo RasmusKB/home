@@ -12,7 +12,6 @@
   };
   inputs.nixGL.url = "github:nix-community/nixGL";
   inputs.flake-utils.url = "github:numtide/flake-utils";
-  inputs.emacs-overlay.url = "github:nix-community/emacs-overlay";
 
   outputs =
     inputs@{
@@ -23,7 +22,6 @@
       nixpkgs-kubelogin,
       home-manager,
       flake-utils,
-      emacs-overlay,
       ...
     }:
     flake-utils.lib.eachDefaultSystem (system:
@@ -36,7 +34,6 @@
 
       pkgs-stable = import nixpkgs-stable {
         inherit system;
-        overlays = [ nixGL.overlay emacs-overlay.overlay ];
         config.allowUnfree = true;
       };
 
