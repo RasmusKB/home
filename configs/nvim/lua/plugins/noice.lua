@@ -38,13 +38,12 @@ end
 noice.setup(opts)
 
 local map = vim.keymap.set
-map("n", "<leader>sn", "", { desc = "+noice" })
 map("c", "<S-Enter>", function()
     noice.redirect(vim.fn.getcmdline())
 end, { desc = "Redirect Cmdline" })
 map("n", "<leader>snl", function() noice.cmd("last") end, { desc = "Noice Last Message" })
 map("n", "<leader>snh", function() noice.cmd("history") end, { desc = "Noice History" })
-map("n", "<leader>sna", function() noice.cmd("all") end, { desc = "Noice All" })
+map("n", "<leader>sn", function() noice.cmd("all") end, { desc = "Noice All" })
 map("n", "<leader>snd", function() noice.cmd("dismiss") end, { desc = "Dismiss All" })
 map("n", "<leader>snt", function() noice.cmd("pick") end, { desc = "Noice Picker (Telescope/FzfLua)" })
 

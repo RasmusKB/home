@@ -1,8 +1,6 @@
-local ok, telescope = pcall(require, "telescope")
-if not ok then
-    vim.notify("telescope.nvim is not installed!", vim.log.levels.WARN)
-    return
-end
+local _, telescope = pcall(require, "telescope")
+local telescope_builtin = require('telescope.builtin')
+pcall(telescope.load_extension, "file_browser")
 
 pcall(require, "plenary")
 pcall(require, "nvim-web-devicons")
@@ -58,28 +56,11 @@ telescope.setup({
     },
 })
 
-pcall(telescope.load_extension, "file_browser")
-pcall(telescope.load_extension, "projects")
-
-local ok_proj, project = pcall(require, "project_nvim")
-if ok_proj then
-    project.setup({
-        detection_methods = { "pattern" },
-        patterns = { ".git" },
-        show_hidden = true,
-    })
-end
-
 local map = vim.keymap.set
-map("n", "<leader>ff", function() telescope.builtin.find_files() end, { desc = "Find Files" })
-map("n", "<leader>fg", function() telescope.builtin.live_grep() end, { desc = "Telescope Grep" })
-map("n", "<leader>fb", function() telescope.builtin.buffers() end, { desc = "Telescope buffers" })
-map("n", "<leader>fh", function() telescope.builtin.help_tags() end, { desc = "Telescope help tags" })
+map("n", "<leader>ff", function() telescope_builtin.find_files() end, { desc = "Find Files" })
+map("n", "<leader>fg", function() telescope_builtin.live_grep() end, { desc = "Telescope Grep" })
+map("n", "<leader>fb", function() telescope_builtin.buffers() end, { desc = "Telescope buffers" })
+map("n", "<leader>fh", function() telescope_builtin.help_tags() end, { desc = "Telescope help tags" })
 map("n", "<leader>fv", function()
     telescope.extensions.file_browser.file_browser({ path = vim.fn.expand("%:p:h") })
 end, { desc = "Telescope file browser" })
-map("n", "<leader>fp", function()
-    if pcall(require, "telescope") then
-        telescope.extensions.projects.projects({})
-    end
-end, { desc = "Telescope projects" })

@@ -85,9 +85,9 @@ vim.wo.number = true                       -- Show line numbers
 vim.cmd([[filetype plugin indent on]])
 
 -- Tab settings
-vim.o.tabstop = 4            -- Number of visual spaces per TAB
-vim.o.softtabstop = 4        -- Tabs feel like 4 spaces
-vim.o.shiftwidth = 4         -- Autoindent amount
+vim.o.tabstop = 2            -- Number of visual spaces per TAB
+vim.o.softtabstop = 2        -- Tabs feel like 4 spaces
+vim.o.shiftwidth = 2         -- Autoindent amount
 vim.o.autoindent = true      -- Copy indent from current line when starting a new one
 
 -- Syntax and performance settings

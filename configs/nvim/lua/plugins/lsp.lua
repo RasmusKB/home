@@ -10,6 +10,6 @@ if not ok_mason_lsp then
     vim.notify("mason-lspconfig.nvim is not installed!", vim.log.levels.WARN)
 else
     mason_lsp.setup({
-        ensure_installed = { "lua_ls, elixir_ls" },
+        ensure_installed = { "lua_ls", "elixirls" },
     })
 end

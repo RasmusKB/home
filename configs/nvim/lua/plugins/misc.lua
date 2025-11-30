@@ -6,12 +6,8 @@ else
     })
 end
 
-local ok_floaterm, _ = pcall(require, "vim-floaterm")
-if not ok_floaterm then
-    vim.notify("vim-floaterm is not installed!", vim.log.levels.WARN)
-else
-    vim.keymap.set({ "n", "t" }, "<leader>ft", "<cmd>FloatermToggle<CR>", { desc = "Toggle Floaterm" })
-end
+-- Floaterm
+vim.keymap.set({ "n", "t" }, "<leader>ft", "<cmd>FloatermToggle<CR>", { desc = "Toggle Floaterm" })
 
 local ok_icons, mini_icons = pcall(require, "mini.icons")
 if not ok_icons then

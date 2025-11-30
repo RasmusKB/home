@@ -14,6 +14,7 @@ else
         highlight = {
             enable = true,
         },
+		parser_install_dir = vim.fn.stdpath('data') .. '/treesitter',
     })
 end
 
