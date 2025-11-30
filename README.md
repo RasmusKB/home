@@ -1,7 +1,6 @@
 # Home
 
-* Create nix.conf (Workaround)
-Create a file at `~/.config/nix/nix.conf` containing
+* Create nix.conf (Workaround) at `~/.config/nix/nix.conf` containing
 ```sh
 experimental-features = nix-command flakes
 ```
