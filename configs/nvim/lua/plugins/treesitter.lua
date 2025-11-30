@@ -3,18 +3,10 @@ if not ok_ts then
     vim.notify("nvim-treesitter is not installed!", vim.log.levels.WARN)
 else
     ts_configs.setup({
-        ensure_installed = {
-            "c",
-            "lua",
-            "vim",
-            "vimdoc",
-            "python",
-            "javascript",
-        },
+				auto_install = false,
         highlight = {
             enable = true,
         },
-		parser_install_dir = vim.fn.stdpath('data') .. '/treesitter',
     })
 end
 
