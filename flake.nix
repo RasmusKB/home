@@ -72,7 +72,7 @@
             echo "==> $DOT_DIR already exists, proceeding bootstrapping."
             fi
 
-            home-manager switch -b backup --extra-experimental-features 'nix-command flakes'
+            home-manager switch -b backup --extra-experimental-features "nix-command flakes"
           '';
         };
 

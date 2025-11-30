@@ -7,5 +7,5 @@ sh <(curl -L https://nixos.org/nix/install) --daemon
 
 * Run the bootstrap script
 ```sh
-nix run github:RasmusKB/home?dir=home-manager#bootstrap --extra-experimental-features "nix-command flakes"
+nix run github:RasmusKB/home#bootstrap --extra-experimental-features "nix-command flakes"
 ```
