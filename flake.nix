@@ -50,20 +50,14 @@
       extendedLib = import ./lib args;
 
     in {
-      environment.shells = with pkgs; [ fish ];
-      users.defaultUserShell = pkgs.fish;
+      environment.shells = with pkgs; [ zsh ];
+      users.defaultUserShell = pkgs.zsh;
 
       packages.homeConfigurations = {
-        oliverbak =
+        rasmustest =
           home-manager.lib.homeManagerConfiguration {
             inherit pkgs;
-            modules = [ ./hosts/ubuntu_24_04_desktop_home.nix ];
-            extraSpecialArgs = { inherit pkgs-stable pkgs-kubelogin extendedLib nixGL; };
-          };
-        vchg38 =
-          home-manager.lib.homeManagerConfiguration {
-            inherit pkgs;
-            modules = [ ./hosts/ubuntu_22_04_laptop_work.nix ];
+            modules = [ ./hosts/ubuntu_22_04_laptop_home.nix ];
             extraSpecialArgs = { inherit pkgs-stable pkgs-kubelogin extendedLib nixGL; };
           };
       };

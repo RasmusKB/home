@@ -1,154 +1,152 @@
-vim.wo.number = true
-vim.opt.clipboard:append("unnamedplus")
-vim.o.ignorecase = true
+vim.g.mapleader = " "
+-- Shortcuts for navigating different windows
+vim.keymap.set('n', '<C-h>', '<C-w>h', { desc = 'Move to left window' })
+vim.keymap.set('n', '<C-j>', '<C-w>j', { desc = 'Move to below window' })
+vim.keymap.set('n', '<C-k>', '<C-w>k', { desc = 'Move to above window' })
+vim.keymap.set('n', '<C-l>', '<C-w>l', { desc = 'Move to right window' })
 
--- Plenary.nvim
-local async = require "plenary.async"
+-- Remove arrow keys in different modes
+local nop_opts = { noremap = true, silent = true }
+-- Command-line mode
+vim.keymap.set('c', '<Down>', '<Nop>', nop_opts)
+vim.keymap.set('c', '<Left>', '<Nop>', nop_opts)
+vim.keymap.set('c', '<Right>', '<Nop>', nop_opts)
+vim.keymap.set('c', '<Up>', '<Nop>', nop_opts)
+-- Insert mode
+vim.keymap.set('i', '<Down>', '<Nop>', nop_opts)
+vim.keymap.set('i', '<Left>', '<Nop>', nop_opts)
+vim.keymap.set('i', '<Right>', '<Nop>', nop_opts)
+vim.keymap.set('i', '<Up>', '<Nop>', nop_opts)
+-- Normal mode
+vim.keymap.set('n', '<Down>', '<Nop>', nop_opts)
+vim.keymap.set('n', '<Left>', '<Nop>', nop_opts)
+vim.keymap.set('n', '<Right>', '<Nop>', nop_opts)
+vim.keymap.set('n', '<Up>', '<Nop>', nop_opts)
+-- Visual mode
+vim.keymap.set('v', '<Down>', '<Nop>', nop_opts)
+vim.keymap.set('v', '<Left>', '<Nop>', nop_opts)
+vim.keymap.set('v', '<Right>', '<Nop>', nop_opts)
+vim.keymap.set('v', '<Up>', '<Nop>', nop_opts)
+local group = vim.api.nvim_create_augroup("SeriouslyNoInsertArrows", { clear = true })
+vim.api.nvim_create_autocmd("InsertEnter", {
+  group = group,
+  callback = function()
+    vim.keymap.set("i", "<Up>", function()
+      return vim.fn.pumvisible() == 1 and "<C-p>" or ""
+    end, { expr = true, noremap = true, silent = true, buffer = true })
+  end,
+})
+vim.api.nvim_create_autocmd("InsertEnter", {
+  group = group,
+  callback = function()
+    vim.keymap.set("i", "<Down>", function()
+      return vim.fn.pumvisible() == 1 and "<C-n>" or ""
+    end, { expr = true, noremap = true, silent = true, buffer = true })
+  end,
+})
+-- Linebreak-aware navigation
+vim.keymap.set('n', 'j', 'gj', { noremap = true, silent = true, desc = 'Down (wrapped line)' })
+vim.keymap.set('n', 'k', 'gk', { noremap = true, silent = true, desc = 'Up (wrapped line)' })
+vim.keymap.set('n', '0', 'g0i', { noremap = true, silent = true, desc = 'Start of wrapped line + insert' })
+vim.keymap.set('n', '$', 'g$', { noremap = true, silent = true, desc = 'End of wrapped line' })
 
--- Telescope
-local telescope = require('telescope')
-local telescope_actions = require('telescope.actions')
-
-telescope.setup
-{
-   defaults = {
-      mappings = {
-         i = {
-            ["<C-j>"] = "move_selection_next",
-            ["<C-k>"] = "move_selection_previous",
-            ["<C-n>"] = "cycle_history_next",
-            ["<C-p>"] = "cycle_history_prev",
-	    ["<C-o>"] = telescope_actions.smart_send_to_qflist + telescope_actions.open_qflist,
-         },
-         n = {
-            ["<C-j>"] = "move_selection_next",
-            ["<C-k>"] = "move_selection_previous",
-	    ["<C-o>"] = telescope_actions.smart_send_to_qflist + telescope_actions.open_qflist,
-         },
-      },
-   },
-}
-
-telescope.load_extension('fzf')
-
-local telescope_builtin = require('telescope.builtin')
-
-
-vim.keymap.set('n', '<C-c>pr', telescope_builtin.live_grep, { desc = 'Telescope live grep' })
-vim.keymap.set('n', '<C-c>pf', telescope_builtin.find_files, { desc = 'Telescope find_files' })
-vim.keymap.set('n', '<C-c>b', telescope_builtin.buffers, { desc = 'Telescope buffers' })
-
--- Which-key
-local which_key = require("which-key")
-
--- Treesitter
-require("nvim-treesitter.configs").setup {
-   auto_install = false,
-   highlight = {
-      enable = true,
-   },
-}
-
--- Neorg
-local neorg_builtin = require("neorg")
-
-neorg_builtin.setup {
-   load = {
-      ["core.defaults"] = {},
-      ["core.concealer"] = {},
-      ["core.dirman"] = {
-         config = {
-            workspaces = {
-               personal = "~/personal",
-	       work = "~/work",
-            },
-            default_workspace = "personal",
-         },
-      },
-   },
-}
-
-vim.keymap.set('n', '<C-c><C-t>', "<Plug>(neorg.qol.todo-items.todo.task-cycle)", { desc = 'cycle todo item' })
-
-
--- Neogit
-local neogit = require('neogit')
-
--- vim.keymap.set('n', '<C-x>g', neogit.open, { desc = 'Telescope buffers' })
-
--- Theme
-vim.opt.background = "dark" -- set this to dark or light
-vim.cmd("colorscheme oxocarbon")
-
-
--- Noice
-require("noice").setup({
-  lsp = {
-    -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
-    override = {
-      ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-      ["vim.lsp.util.stylize_markdown"] = true,
-      -- ["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
-    },
-  },
-  -- you can enable a preset for easier configuration
-  presets = {
-    bottom_search = false, -- use a classic bottom cmdline for search
-    command_palette = false, -- position the cmdline and popupmenu together
-    long_message_to_split = true, -- long messages will be sent to a split
-    inc_rename = false, -- enables an input dialog for inc-rename.nvim
-    lsp_doc_border = false, -- add a border to hover docs and signature help
-  },
+-- Remove auto commenting
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "*",
+  callback = function()
+    vim.opt_local.formatoptions:remove({ "c", "r", "o" })
+  end,
+})
+-- Automatically delete all trailing whitespaces on save
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*",
+  callback = function()
+    if vim.bo.filetype ~= "markdown" then
+      vim.cmd([[%s/\s\+$//e]])
+    end
+  end,
 })
 
--- Snacks
-require("snacks").setup({
-  opts = {
-    lazygit = { enabled = true },
-    bigfile = { enabled = true },
-    quickfile = { enabled = true },
-    statuscolumn = { enabled = true },
-    bufdelete = { enabled = true },
-    gitbrowse = { enabled = true },
-  }
+-- Save file as sudo when needed
+vim.keymap.set('c', 'w!!', function()
+  vim.cmd([[execute 'silent! write !sudo tee % >/dev/null' | edit!]])
+end, { noremap = true, desc = 'Save with sudo' })
+
+-- Misc settings
+vim.opt.clipboard:append("unnamedplus")    -- Use system clipboard
+vim.o.compatible = false                   -- Not necessary in Neovim, but safe
+vim.o.splitbelow = true                    -- Horizontal splits below
+vim.o.splitright = true                    -- Vertical splits to the right
+vim.o.showmode = false                     -- Don't show mode (already in statusline)
+vim.o.ignorecase = true                    -- Case-insensitive search
+vim.wo.number = true                       -- Show line numbers
+
+-- Enable filetype plugins and indentation
+vim.cmd([[filetype plugin indent on]])
+
+-- Tab settings
+vim.o.tabstop = 4            -- Number of visual spaces per TAB
+vim.o.softtabstop = 4        -- Tabs feel like 4 spaces
+vim.o.shiftwidth = 4         -- Autoindent amount
+vim.o.autoindent = true      -- Copy indent from current line when starting a new one
+
+-- Syntax and performance settings
+vim.cmd("syntax on")
+vim.o.maxmempattern = 10000  -- Increase memory for regex matching
+vim.o.redrawtime = 10000     -- Allow more time for syntax highlighting in big files
+
+-- Set C indentation style
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "c",
+  callback = function()
+    vim.opt_local.shiftwidth = 4
+    vim.opt_local.softtabstop = 4
+    vim.opt_local.expandtab = true
+  end,
 })
 
-vim.keymap.set('n', '<C-x>g', function() Snacks.lazygit() end, { desc = 'Lazygit' })
-vim.keymap.set('n', '<C-x>t', function() Snacks.gitbrowse() end, { desc = 'Git in browser' })
-
-local toggleterm = require("toggleterm")
-
-toggleterm.setup({
-  float_opts = {
-    border = 'curved'
-  }
+-- Set F# indentation style
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "fsharp",
+  callback = function()
+    vim.opt_local.shiftwidth = 4
+    vim.opt_local.softtabstop = 4
+    vim.opt_local.expandtab = true
+  end,
 })
 
-vim.keymap.set('n', '<C-t>', "<cmd>ToggleTerm size=40 direction=float<CR>", { desc = 'Floating terminal' })
-vim.keymap.set('t', '<C-t>', "<cmd>ToggleTerm size=40 direction=float<CR>", { desc = 'Floating terminal' })
+-- Enable true color in Neovim
+vim.opt.termguicolors = true
 
--- Misc
+-- Don't overwrite clipboard when deleting with `x` or `X`
+vim.keymap.set('n', 'x', '"_x', { noremap = true, silent = true })
+vim.keymap.set('n', 'X', '"_x', { noremap = true, silent = true })
 
--- This is a collaboration between Alacritty|Tmux|Neovim
--- 1. Tmux ignores Ctrl-Backspace. Solution: remap Ctrl-Backspace to <Esc><DEL> in alacritty.
--- 2. Neovim must now remap <Esc><DEL> to interpret it as Ctrl-Backspace/Ctrl-w
-vim.keymap.set("i", "<M-BS>", "<C-w>", { expr = false })
+-- Don't overwrite clipboard when pasting in visual mode with `p`
+vim.keymap.set('x', 'p', 'pgvy', { noremap = true, silent = true })
 
-
--- Better QuickFix lists
-require("quicker").setup()
-require("bqf").setup({ })
-
-
-local flash = require("flash")
-flash.setup({
-  highlight = {
-    matches = false,
-    multi_label = true,
-  }
+-- Keybind for opening Alacritty
+vim.keymap.set('n', '<C-n>', function()
+  vim.fn.jobstart("alacritty", { detach = true })
+end, { noremap = true, silent = true, desc = "Open new Alacritty terminal" })
+vim.diagnostic.config({
+  virtual_text = true,
+  signs = true,
+  underline = true,
+  update_in_insert = false,
+  severity_sort = true,
 })
-vim.keymap.set("n", "<C-e>", flash.jump, { desc = 'Toggle flash' })
 
--- Git signs
-require('gitsigns').setup({})
-
+require("plugins.bufferline")
+require("plugins.colorscheme")
+require("plugins.dashboard")
+require("plugins.flash")
+require("plugins.lsp")
+require("plugins.lualine")
+require("plugins.misc")
+require("plugins.neogit")
+require("plugins.noice")
+require("plugins.nvim-cmp")
+require("plugins.telescope")
+require("plugins.treesitter")
+require("plugins.trouble")

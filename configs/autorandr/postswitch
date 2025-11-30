@@ -1,4 +1,0 @@
-#!/bin/sh
-
-i3-msg restart
-setxkbmap -option "ctrl:nocaps"

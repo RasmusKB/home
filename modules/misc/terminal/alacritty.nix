@@ -1,7 +1,7 @@
 { config, pkgs, extendedLib, nixGL, ... }:
 
 with extendedLib;
-let 
+let
    cfg = config.modules.misc.terminal.alacritty;
 in
 {
@@ -28,7 +28,7 @@ in
         # 1. Running showkeys -a, alacritty doesn't distinguish
 	# between Ctrl-Backspace and Backspace (both returns 0x7f)
 
-	# 2. This makes Ctrl-Backspace unavailable in Tmux. 
+	# 2. This makes Ctrl-Backspace unavailable in Tmux.
 	# Solution: remap to <ESC><DEL>, which
 	# is interpreted similar by Tmux and Alacritty.
 
@@ -42,7 +42,7 @@ in
             }
           ];
 
-        terminal.shell = { program = "${pkgs.fish}/bin/fish"; };
+        terminal.shell = { program = "${pkgs.zsh}/bin/zsh"; };
       };
     };
   };

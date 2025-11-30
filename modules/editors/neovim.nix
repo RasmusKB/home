@@ -1,7 +1,7 @@
 { config, pkgs-stable, extendedLib, ... }:
 
 with extendedLib;
-let 
+let
    cfg = config.modules.editors.neovim;
 in
 {
@@ -14,29 +14,34 @@ in
     programs.neovim.enable = true;
 
     programs.neovim.plugins = with pkgs-stable; [
-      vimPlugins.nvim-treesitter.withAllGrammars
-      vimPlugins.nvim-treesitter
-      vimPlugins.telescope-nvim
-      vimPlugins.telescope-fzf-native-nvim
-      vimPlugins.neorg
-      vimPlugins.neogit
-      vimPlugins.oxocarbon-nvim
-      vimPlugins.noice-nvim
-      vimPlugins.snacks-nvim
-      vimPlugins.toggleterm-nvim
-      vimPlugins.nvim-bqf
-      vimPlugins.fzf-vim
-      vimPlugins.quicker-nvim
-      vimPlugins.flash-nvim
-      vimPlugins.gitsigns-nvim
-      vimPlugins.plenary-nvim
-      vimPlugins.which-key-nvim
-    ];
-
-    programs.neovim.extraPackages = with pkgs-stable; [
-      tree-sitter
-      tree-sitter-grammars.tree-sitter-norg
-      tree-sitter-grammars.tree-sitter-norg-meta
+	  vimPlugins.bufferline-nvim
+	  vimPlugins.cmp-nvim-lsp
+	  vimPlugins.dashboard-nvim
+ 	  vimPlugins.diffview-nvim
+	  vimPlugins.flash-nvim
+	  vimPlugins.gruvbox
+	  vimPlugins.lazy-nvim
+	  vimPlugins.lualine-nvim
+	  vimPlugins.mason-lspconfig-nvim
+	  vimPlugins.mason-nvim
+	  vimPlugins.mini-icons
+	  vimPlugins.neogit
+	  vimPlugins.noice-nvim
+	  vimPlugins.nui-nvim
+	  vimPlugins.nvim-cmp
+	  vimPlugins.nvim-jdtls
+	  vimPlugins.nvim-lspconfig
+	  vimPlugins.nvim-surround
+	  vimPlugins.nvim-treesitter
+	  vimPlugins.nvim-web-devicons
+	  vimPlugins.plenary-nvim
+	  vimPlugins.project-nvim
+	  vimPlugins.rainbow-delimiters-nvim
+	  vimPlugins.snacks-nvim
+	  vimPlugins.telescope-file-browser-nvim
+	  vimPlugins.telescope-nvim
+	  vimPlugins.trouble-nvim
+	  vimPlugins.vim-floaterm
     ];
 
     home.packages = with pkgs-stable; [
