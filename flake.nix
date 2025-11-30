@@ -70,7 +70,7 @@
 
             if [ ! -d "$DOT_DIR" ]; then
             echo "==> $DOT_DIR doesn't exist, cloning into $DOT_DIR"
-            git clone https://github.com/to-bak/home.git "$DOT_DIR"
+            git clone https://github.com/RasmusKB/home.git "$DOT_DIR"
             else
             echo "==> $DOT_DIR already exists, proceeding bootstrapping."
             fi
