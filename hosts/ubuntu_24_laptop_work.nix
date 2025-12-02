@@ -19,7 +19,7 @@ in
     ../modules/misc
   ];
 
-  home.username = "tcm873@ds.mot.com";
+  home.username = "tcm873";
   home.homeDirectory = "/home/tcm873@ds.mot.com";
   home.stateVersion = "23.11";
 
