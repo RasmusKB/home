@@ -57,6 +57,12 @@
             modules = [ ./hosts/ubuntu_22_04_laptop_home.nix ];
             extraSpecialArgs = { inherit pkgs-stable pkgs-kubelogin extendedLib nixGL; };
           };
+          rasmus =
+          home-manager.lib.homeManagerConfiguration {
+            inherit pkgs;
+            modules = [ ./hosts/ubuntu_24_laptop_home.nix ];
+            extraSpecialArgs = { inherit pkgs-stable pkgs-kubelogin extendedLib nixGL; };
+          };
       };
 
       packages.bootstrap = pkgs.writeShellApplication {
