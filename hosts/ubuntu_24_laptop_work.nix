@@ -19,8 +19,8 @@ in
     ../modules/misc
   ];
 
-  home.username = "rasmus";
-  home.homeDirectory = "/home/rasmus";
+  home.username = "tcm873@ds.mot.com";
+  home.homeDirectory = "/home/tcm873@ds.mot.com";
   home.stateVersion = "23.11";
 
   home.packages = with pkgs; [
@@ -44,7 +44,7 @@ in
     ripgrep.enable = true;
     shell.zsh.enable = true;
     terminal.alacritty.enable = true;
-	browser.chromium.enable = true;
+	browser.google_chrome.enable = true;
 	fzf.enable = true;
   };
 
