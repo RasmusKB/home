@@ -60,7 +60,7 @@
           rasmus =
           home-manager.lib.homeManagerConfiguration {
             inherit pkgs;
-            modules = [ ./hosts/ubuntu_24_laptop_home.nix ];
+            modules = [ ./hosts/ubuntu_24_laptop_work.nix ];
             extraSpecialArgs = { inherit pkgs-stable pkgs-kubelogin extendedLib nixGL; };
           };
       };
