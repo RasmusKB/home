@@ -12,6 +12,9 @@ in
   config = mkIf cfg.enable {
     programs.zsh = {
       enable = true;
+			initContent = lib.mkBefore ''
+				ZSH_DISABLE_COMPFIX="true"
+			'';
       oh-my-zsh = {
         enable = true;
         theme = "robbyrussell";
@@ -20,7 +23,10 @@ in
           "sudo"
           "docker"
           "kubectl"
-		  "mix"
+					"mix"
+					"kubectl"
+					"rust"
+					"npm"
         ];
       };
     };

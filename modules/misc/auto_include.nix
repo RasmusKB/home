@@ -29,5 +29,6 @@
     pkgs.unzip
     pkgs.gnupg
     pkgs.lazygit
+		pkgs.ffmpeg
   ];
 }

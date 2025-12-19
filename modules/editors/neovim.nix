@@ -40,6 +40,9 @@ in
 	  vimPlugins.telescope-nvim
 	  vimPlugins.trouble-nvim
 	  vimPlugins.vim-floaterm
+		vimPlugins.markview-nvim
+		vimPlugins.diagram-nvim
+		vimPlugins.image-nvim
     ];
 
 	programs.neovim.extraPackages = with pkgs-stable; [

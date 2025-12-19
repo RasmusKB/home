@@ -19,7 +19,7 @@ in
     ../modules/misc
   ];
 
-  home.username = "tcm873@ds.mot.com";
+  home.username = "tcm873";
   home.homeDirectory = "/home/tcm873@ds.mot.com";
   home.stateVersion = "23.11";
 
@@ -44,8 +44,7 @@ in
     ripgrep.enable = true;
     shell.zsh.enable = true;
     terminal.alacritty.enable = true;
-	browser.google_chrome.enable = true;
-	fzf.enable = true;
+	  fzf.enable = true;
   };
 
   home.file.".config/nix/" = {

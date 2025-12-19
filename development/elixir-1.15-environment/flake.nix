@@ -11,7 +11,7 @@
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = import nixpkgs { inherit system; };
-        elixir = pkgs.beam.packages.erlang_26.elixir_1_17;
+        elixir = pkgs.beam.packages.erlang_26.elixir_1_15;
         beamPkg = pkgs.beam.packagesWith pkgs.erlang_26;
         elixir-ls = (beamPkg.elixir-ls.override {
           mixRelease = beamPkg.mixRelease.override { elixir = elixir; };
