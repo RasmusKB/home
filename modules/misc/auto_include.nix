@@ -30,5 +30,6 @@
     pkgs.gnupg
     pkgs.lazygit
 		pkgs.ffmpeg
+		pkgs.websocat
   ];
 }
