@@ -16,33 +16,35 @@ in
     programs.neovim.plugins = with pkgs-stable; [
       vimPlugins.nvim-treesitter.withAllGrammars
       vimPlugins.nvim-treesitter
-	  vimPlugins.bufferline-nvim
-	  vimPlugins.cmp-nvim-lsp
-	  vimPlugins.dashboard-nvim
- 	  vimPlugins.diffview-nvim
-	  vimPlugins.flash-nvim
-	  vimPlugins.gruvbox
-	  vimPlugins.lualine-nvim
-	  vimPlugins.mason-lspconfig-nvim
-	  vimPlugins.mason-nvim
-	  vimPlugins.mini-icons
-	  vimPlugins.neogit
-	  vimPlugins.noice-nvim
-	  vimPlugins.nui-nvim
-	  vimPlugins.nvim-cmp
-	  vimPlugins.nvim-surround
-	  vimPlugins.nvim-web-devicons
-	  vimPlugins.plenary-nvim
-	  vimPlugins.project-nvim
-	  vimPlugins.rainbow-delimiters-nvim
-	  vimPlugins.snacks-nvim
-	  vimPlugins.telescope-file-browser-nvim
-	  vimPlugins.telescope-nvim
-	  vimPlugins.trouble-nvim
-	  vimPlugins.vim-floaterm
-		vimPlugins.markview-nvim
-		vimPlugins.diagram-nvim
-		vimPlugins.image-nvim
+			vimPlugins.bufferline-nvim
+			vimPlugins.cmp-nvim-lsp
+			vimPlugins.dashboard-nvim
+			vimPlugins.diffview-nvim
+			vimPlugins.flash-nvim
+			vimPlugins.gruvbox
+			vimPlugins.lualine-nvim
+			vimPlugins.mason-lspconfig-nvim
+			vimPlugins.mason-nvim
+			vimPlugins.mini-icons
+			vimPlugins.neogit
+			vimPlugins.noice-nvim
+			vimPlugins.nui-nvim
+			vimPlugins.nvim-cmp
+			vimPlugins.nvim-surround
+			vimPlugins.nvim-web-devicons
+			vimPlugins.plenary-nvim
+			vimPlugins.project-nvim
+			vimPlugins.rainbow-delimiters-nvim
+			vimPlugins.snacks-nvim
+			vimPlugins.telescope-file-browser-nvim
+			vimPlugins.telescope-nvim
+			vimPlugins.trouble-nvim
+			vimPlugins.vim-floaterm
+			vimPlugins.markview-nvim
+			vimPlugins.diagram-nvim
+			vimPlugins.image-nvim
+			vimPlugins.nvim-spectre
+			vimPlugins.statuscol-nvim
     ];
 
 	programs.neovim.extraPackages = with pkgs-stable; [

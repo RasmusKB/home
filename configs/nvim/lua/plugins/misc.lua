@@ -36,5 +36,6 @@ else
     snacks.setup({
         indent = { enabled = true },
         scope = { enabled = true },
+				statuscolumn = { enabled = false },
     })
 end
