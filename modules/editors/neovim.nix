@@ -44,7 +44,6 @@ in
 			vimPlugins.diagram-nvim
 			vimPlugins.image-nvim
 			vimPlugins.nvim-spectre
-			vimPlugins.statuscol-nvim
     ];
 
 	programs.neovim.extraPackages = with pkgs-stable; [
