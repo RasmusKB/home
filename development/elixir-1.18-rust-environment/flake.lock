@@ -33,22 +33,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-openapi": {
-      "locked": {
-        "lastModified": 1761166759,
-        "narHash": "sha256-DTTTjEVRxEBLHoiCJ2xZL+IOZ7Vw2PnnGintfZt16QM=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "01b6809f7f9d1183a2b3e081f0a1e6f8f415cb09",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "01b6809f7f9d1183a2b3e081f0a1e6f8f415cb09",
-        "type": "github"
-      }
-    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1744536153,
@@ -69,7 +53,6 @@
       "inputs": {
         "flake-utils": "flake-utils",
         "nixpkgs": "nixpkgs",
-        "nixpkgs-openapi": "nixpkgs-openapi",
         "rust-overlay": "rust-overlay"
       }
     },

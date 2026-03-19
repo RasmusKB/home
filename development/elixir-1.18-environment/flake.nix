@@ -27,9 +27,11 @@
 
         devShells.default = pkgs.mkShell {
           buildInputs = [
+						pkgs.pkg-config
             pkgs.gnumake
             pkgs.gcc
             pkgs.readline
+						pkgs.srtp
             pkgs.openssl
             pkgs.zlib
             pkgs.libxml2
@@ -39,6 +41,7 @@
             pkgs.postgresql
             pkgs.ctags
             pkgs.protobuf
+						pkgs.clang-tools
 
             pkgs.erlang
             elixir
@@ -48,6 +51,16 @@
             nodejs
             asyncapi
           ];
+					shellHook = ''
+            export ERL_INCLUDE_PATH="${pkgs.beam.packages.erlang_27.erlang}/lib/erlang/usr/include"
+
+            export PKG_CONFIG_PATH="${pkgs.openssl.dev}/lib/pkgconfig:${pkgs.zlib.dev}/lib/pkgconfig:$PKG_CONFIG_PATH"
+
+            export CPATH="${pkgs.openssl.dev}/include:${pkgs.zlib.dev}/include:$CPATH"
+            export LIBRARY_PATH="${pkgs.openssl.out}/lib:${pkgs.zlib.out}/lib:$LIBRARY_PATH"
+
+            echo "Elixir/Nix Dev Environment Loaded"
+          '';
         };
 
       });

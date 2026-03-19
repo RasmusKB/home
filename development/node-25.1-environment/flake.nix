@@ -23,7 +23,7 @@
 				npxShim = pkgs.writeShellScriptBin "npx" ''
           if [ "$1" = "openapi-generator-cli" ]; then
             shift
-            echo "⚡ [NIX FLAKE] Intercepting 'npx openapi-generator-cli' to use system Java..."
+            echo "Intercepting 'npx openapi-generator-cli' to use system Java..."
             exec ${openApiGenerator}/bin/openapi-generator-cli "$@"
           else
             exec ${nodejs}/bin/npx "$@"
@@ -58,9 +58,6 @@
             export PATH=${npxShim}/bin:$PATH
 
             export JAVA_HOME=${jdk}
-            echo "Environment loaded."
-            echo "  - Java: 21 (Verified)"
-            echo "  - NPX:  Shimmed to fix OpenApi Generator"
           '';
         };
 

@@ -11,6 +11,9 @@
     pkgs-stable.gdb
     pkgs-stable.nixfmt-classic
     pkgs-stable.git
+		pkgs-stable.python315
+		pkgs-stable.claude-code
+		pkgs-stable.awscli2
     pkgs.nmap
     pkgs.whois
     pkgs.tcpdump
