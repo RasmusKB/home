@@ -39,7 +39,11 @@ in
   modules.editors.neovim.enable = true;
 
   modules.misc = {
-    ai.enable = true;
+    ai = {
+      enable = true;
+      workflows.enable = true;
+      claudeConfig.enable = true;
+    };
     direnv.enable = true;
     kubernetes.enable = true;
     ripgrep.enable = true;

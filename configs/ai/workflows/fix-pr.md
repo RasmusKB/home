@@ -16,6 +16,7 @@ You are tasked with addressing feedback on the current Pull Request.
    - Read the relevant files.
    - Apply code changes to resolve the feedback.
    - If a comment is a question or lacks enough detail, draft a reply but do not apply code changes for that specific point.
+   - If a comment requires big changes across many files consult with the prompter before making any changes.
 4. **Verification**: 
    - After changes, summarize what was fixed.
    - List any comments that could not be addressed automatically.
