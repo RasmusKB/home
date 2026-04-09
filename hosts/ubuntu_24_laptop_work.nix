@@ -39,6 +39,7 @@ in
   modules.editors.neovim.enable = true;
 
   modules.misc = {
+    ai.enable = true;
     direnv.enable = true;
     kubernetes.enable = true;
     ripgrep.enable = true;
