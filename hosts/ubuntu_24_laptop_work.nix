@@ -39,7 +39,7 @@ in
   modules.editors.neovim.enable = true;
 
   modules.misc = {
-    ai = {
+    claude = {
       enable = true;
       workflows.enable = true;
       claudeConfig.enable = true;
