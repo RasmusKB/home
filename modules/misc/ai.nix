@@ -20,12 +20,9 @@ in
     aliases = mkOption {
       type = types.attrsOf types.str;
       default = {
-        "ai-code-review" = "claude --workflow code-review";
-        "ai-debug" = "claude --workflow debug";
-        "ai-test" = "claude --workflow test";
-        "ai-docs" = "claude --workflow docs";
+        "fix-pr" = "claude 'Follow the instructions located at .claude/workflows/example.md'";
       };
-      description = "Shell aliases for AI workflows";
+      description = "Shell aliases for AI workflows that tell Claude to follow workflow instructions";
     };
   };
 
