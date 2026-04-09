@@ -125,6 +125,30 @@ vim.keymap.set('n', 'X', '"_x', { noremap = true, silent = true })
 -- Don't overwrite clipboard when pasting in visual mode with `p`
 vim.keymap.set('x', 'p', 'pgvy', { noremap = true, silent = true })
 
+-- Copy file reference with line range: @PATH_TO_FILE#L{start_line}-L{end_line}
+vim.keymap.set('v', '<leader>cf', function()
+  -- Get line numbers from current visual selection
+  local start_line = vim.fn.line("v")
+  local end_line = vim.fn.line(".")
+
+  -- Ensure start_line is less than end_line
+  if start_line > end_line then
+    start_line, end_line = end_line, start_line
+  end
+
+  local filepath = vim.fn.expand("%:p")
+
+  -- Replace home directory with ~
+  local home = os.getenv("HOME")
+  if home and filepath:sub(1, #home) == home then
+    filepath = "~" .. filepath:sub(#home + 1)
+  end
+
+  local reference = string.format("@%s#L%d-L%d", filepath, start_line, end_line)
+  vim.fn.setreg('+', reference)
+  vim.notify("Copied: " .. reference, vim.log.levels.INFO)
+end, { noremap = true, silent = true, desc = "Copy file reference with line range" })
+
 -- Keybind for opening Alacritty
 vim.keymap.set('n', '<C-n>', function()
   vim.fn.jobstart("alacritty", { detach = true })

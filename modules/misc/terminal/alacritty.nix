@@ -64,6 +64,11 @@ in
 							mods = "Control";
 							action = "SpawnNewInstance";
 						}
+						{
+							key = "Return";
+							mods = "Shift";
+							chars = "\n";
+						}
           ];
 
         terminal.shell = { program = "${pkgs.zsh}/bin/zsh"; };
