@@ -22,6 +22,7 @@ in
 			vimPlugins.diffview-nvim
 			vimPlugins.flash-nvim
 			vimPlugins.gruvbox
+			vimPlugins.tokyonight-nvim
 			vimPlugins.lualine-nvim
 			vimPlugins.mason-lspconfig-nvim
 			vimPlugins.mason-nvim

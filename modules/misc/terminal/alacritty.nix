@@ -2,7 +2,11 @@
 
 with extendedLib;
 let
-   cfg = config.modules.misc.terminal.alacritty;
+	cfg = config.modules.misc.terminal.alacritty;
+	tokyonight-alacritty-moon = pkgs.fetchurl {
+	    url = "https://raw.githubusercontent.com/folke/tokyonight.nvim/a1fc981ec08dec78188010238390130fa5df819a/extras/alacritty/tokyonight_moon.toml";
+			sha256 = "sha256-s6C6jDtkQGJEo4DEzchEXzE0qR6P25WxczUlATzKjAY=";
+	};
 in
 {
   options.modules.misc.terminal.alacritty = {
@@ -18,6 +22,9 @@ in
       package = config.lib.nixGL.wrap pkgs.alacritty;
 
       settings = {
+				general.import = [
+					"${tokyonight-alacritty-moon}"
+				];
         window = {
           title = "Terminal";
 
