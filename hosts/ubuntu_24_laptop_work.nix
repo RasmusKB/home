@@ -44,6 +44,7 @@ in
     ripgrep.enable = true;
     shell.zsh.enable = true;
     terminal.alacritty.enable = true;
+		terminal.tmux.enable = true;
 	  fzf.enable = true;
   };
 

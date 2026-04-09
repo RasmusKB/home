@@ -1,7 +1,7 @@
 { config, pkgs, pkgs-kubelogin, extendedLib, ... }:
 
 with extendedLib;
-let 
+let
    cfg = config.modules.misc.kubernetes;
 in
 {
@@ -18,6 +18,7 @@ in
       pkgs.kubectx
       pkgs.kubernetes-helm
       pkgs.azure-cli
+			pkgs.k9s
 
       pkgs-kubelogin.kubelogin
     ];
